@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  db_user:
+    image: library/postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: dev
+      POSTGRES_DB: cleanarchitecture
+    ports:
+    - target: 5432
+      published: 5433
+    volumes:
+    - ./docker/scripts:/docker-entrypoint-initdb.d
